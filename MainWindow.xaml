@@ -7,11 +7,22 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel Name="Root" Background="{StaticResource BackgroundDark}">
-        <TextBox DockPanel.Dock="Top" Background="#EE6900" Margin="4"></TextBox>
+        <Menu DockPanel.Dock="Top" Name="Tools" Background="{StaticResource BackgroundLight}" Padding="{StaticResource Margin}">
+            <MenuItem Header="File" Background="{StaticResource Foreground}" Padding="{StaticResource MenuItem}">
+                <MenuItem Header="Select Paths">
+                    <MenuItem Header="Steam Folder"/>
+                    <MenuItem Header="Mod Folder"/>
+                </MenuItem>
+                <MenuItem Header="New Config"/>
+                <MenuItem Header="Save"/>
+                <MenuItem Header="SaveAs"/>
+            </MenuItem>
+        </Menu>
+        <StatusBar Name="Status" DockPanel.Dock="Bottom" Padding="{StaticResource Margin}" Background="{StaticResource BackgroundLight}"/>
         <DockPanel Name="Display">
-            <ComboBox Name="GameSelect" DockPanel.Dock="Top" Margin="4"/>
-            <TreeView Name="FolderStructure" DockPanel.Dock="Left" Margin="4" MinWidth="100"></TreeView>
-            <DockPanel Name="SelectedItem" Margin="4"></DockPanel>
+            <ComboBox Name="SubgameSelect" DockPanel.Dock="Top" Margin="{StaticResource Margin}" Background="{StaticResource Foreground}"/>
+            <TreeView Name="FolderStructure" DockPanel.Dock="Left" Margin="{StaticResource Margin}" MinWidth="100" Background="{StaticResource Foreground}"></TreeView>            
+            <DockPanel Name="SelectedItem" Margin="{StaticResource Margin}" Background="{StaticResource BackgroundLight}"></DockPanel>
         </DockPanel>
     </DockPanel>
 </Window>

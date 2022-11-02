@@ -9,5 +9,6 @@
         <SolidColorBrush x:Key="Foreground" Color="#AAAAAA"/>
         <SolidColorBrush x:Key="Highlight" Color="#EE6900"/>
         <Thickness x:Key="Margin" Left="4" Top="4" Right="4" Bottom="4"/>
+        <Thickness x:Key="MenuItem" Left="6" Top="1" Right="6" Bottom="1"/>
     </Application.Resources>
 </Application>
