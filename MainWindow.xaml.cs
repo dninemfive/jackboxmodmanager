@@ -20,6 +20,7 @@ namespace JackboxModManager
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static Config CurrentConfig { get; private set; }
         public MainWindow()
         {
             InitializeComponent();

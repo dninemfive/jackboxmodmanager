@@ -4,13 +4,14 @@ using System.Text;
 
 namespace JackboxModManager
 {
-    public class Mod
+    public class ModInfo
     {
         public string Name;
         public string Description;
         public readonly bool VanillaGame;
         public List<JackboxVersion> JackboxVersions = new();
-        public Mod(string name, string description = null, bool vanilla = false, params JackboxVersion[] jackboxVersions)
+        public string BaseFolder;
+        public ModInfo(string name, string description = null, bool vanilla = false, params JackboxVersion[] jackboxVersions)
         {
             Name = name;
             Description = description;
@@ -63,7 +64,7 @@ namespace JackboxModManager
         public static bool operator <(ModVersion a, ModVersion b) => a.CompareTo(b) < 0;
         public static bool operator >(ModVersion a, ModVersion b) => a.CompareTo(b) > 0;
     }
-    public record JackboxVersion
+    public record JackboxVersion : IComparable
     {
         public readonly int GameNumber;
         public readonly int Build;
@@ -72,11 +73,22 @@ namespace JackboxModManager
             GameNumber = gameNumber;
             Build = build;
         }
+        public int CompareTo(object obj)
+        {
+            if (obj is null) return 1;
+            if (obj is not JackboxVersion other) throw new ArgumentException($"{obj} is not a JackboxVersion!");
+            else
+            {
+                if (GameNumber != other.GameNumber) return GameNumber.CompareTo(other.GameNumber);
+                return Build.CompareTo(other.Build);
+            }
+        }
+        public static bool operator <(JackboxVersion a, JackboxVersion b) => a.CompareTo(b) < 0;
+        public static bool operator >(JackboxVersion a, JackboxVersion b) => a.CompareTo(b) > 0;
     }
     public record GameInfo
     {
         public JackboxVersion Version;
         public string BasePath;
-
     }
 }
