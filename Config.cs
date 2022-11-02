@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Text.RegularExpressions;
-using System.Text.Json;
 
 namespace JackboxModManager
 {
@@ -26,7 +25,7 @@ namespace JackboxModManager
                 foreach(string s in JackboxFolders)
                 {
                     int version = int.Parse(s.Split(" ")[^0]);
-                    int build = 0;
+                    int build = $"{s}/{version.ConfigName()}".ParseBuildNumber(version);
                     yield return new()
                     {
                         Version = new(version, build),

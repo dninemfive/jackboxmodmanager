@@ -73,6 +73,7 @@ namespace JackboxModManager
             GameNumber = gameNumber;
             Build = build;
         }
+        public override string ToString() => $"Jackbox {GameNumber} build {Build}";
         public int CompareTo(object obj)
         {
             if (obj is null) return 1;
@@ -86,9 +87,13 @@ namespace JackboxModManager
         public static bool operator <(JackboxVersion a, JackboxVersion b) => a.CompareTo(b) < 0;
         public static bool operator >(JackboxVersion a, JackboxVersion b) => a.CompareTo(b) > 0;
     }
-    public record GameInfo
+    public record GameInfo : IComparable
     {
         public JackboxVersion Version;
         public string BasePath;
+        public override string ToString() => $"{Version} at {BasePath}";
+        public int CompareTo(object obj) => obj is null ? 1 : Version.CompareTo((obj as GameInfo).Version);
+        public static bool operator <(GameInfo a, GameInfo b) => a.CompareTo(b) < 0;
+        public static bool operator >(GameInfo a, GameInfo b) => a.CompareTo(b) > 0;
     }
 }
