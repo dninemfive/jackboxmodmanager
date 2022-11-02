@@ -6,7 +6,12 @@
         xmlns:local="clr-namespace:JackboxModManager"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+    <DockPanel Name="Root" Background="{StaticResource BackgroundDark}">
+        <TextBox DockPanel.Dock="Top" Background="#EE6900" Margin="4"></TextBox>
+        <DockPanel Name="Display">
+            <ComboBox Name="GameSelect" DockPanel.Dock="Top" Margin="4"/>
+            <TreeView Name="FolderStructure" DockPanel.Dock="Left" Margin="4" MinWidth="100"></TreeView>
+            <DockPanel Name="SelectedItem" Margin="4"></DockPanel>
+        </DockPanel>
+    </DockPanel>
 </Window>

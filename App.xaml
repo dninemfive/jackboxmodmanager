@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:JackboxModManager"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <SolidColorBrush x:Key="BackgroundDark" Color="#111111"/>
+        <SolidColorBrush x:Key="BackgroundLight" Color="#333333"/>
+        <SolidColorBrush x:Key="Foreground" Color="#AAAAAA"/>
+        <SolidColorBrush x:Key="Highlight" Color="#EE6900"/>
+        <Thickness x:Key="Margin" Left="4" Top="4" Right="4" Bottom="4"/>
     </Application.Resources>
 </Application>
