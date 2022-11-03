@@ -15,8 +15,7 @@ namespace JackboxModManager
             <= 5 => "config.jet",
             >= 9 => "jbg.config.jet",
             // todo: get the config names for previous versions from others
-            _ => throw new Exception($"Jackbox {jackboxNumber} is currently unsupported. " +
-                                     $"Please file an issue <a href=\"https://github.com/dninemfive/jbmm/issues \">here</> for help.")
+            _ => throw new Exception(jackboxNumber.UnsupportedMessage())
         };
         public static string TryGetJsonValue(this string path, string propertyName)
         {
@@ -31,9 +30,17 @@ namespace JackboxModManager
             {
                 <= 5 => int.Parse(raw.Split(" ")[^0]),
                 >= 9 => int.Parse(raw),
-                _ => throw new Exception($"Jackbox {jackboxNumber} is currently unsupported. " +
-                                     $"Please file an issue <a href=\"https://github.com/dninemfive/jbmm/issues \">here</> for help.")
+                _ => throw new Exception(jackboxNumber.UnsupportedMessage())
             };
         }
-    }
+        public static string UnsupportedMessage(this int jackboxNumber)
+            => $"Jackbox {jackboxNumber} is currently unsupported. Please file an issue <a href=\"{Constants.IssuesUrl}\">here</> for help.";
+        public static int Compare(int? a, int? b) => (a, b) switch
+        {
+            (null, null) => 0,
+            (null, _) => 1,
+            (_, null) => -1,
+            _ => a.Value.CompareTo(b.Value)
+        };
+    }    
 }
