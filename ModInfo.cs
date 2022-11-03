@@ -10,9 +10,9 @@ namespace JackboxModManager
         public string Name;
         public string Description;
         public readonly bool VanillaGame;
-        public List<JackboxVersion> JackboxVersions = new();
+        public List<PackVersion> JackboxVersions = new();
         public string BaseFolder;
-        public ModInfo(string name, string description = null, string baseFolder = null, bool vanilla = false, params JackboxVersion[] jackboxVersions)
+        public ModInfo(string name, string description = null, string baseFolder = null, bool vanilla = false, params PackVersion[] jackboxVersions)
         {
             Name = name;
             Description = description;

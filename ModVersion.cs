@@ -21,23 +21,43 @@ namespace JackboxModManager
         public override string ToString()
         {
             string result = Major.ToString();
-            if (_minor is not null)
-            {
-                result += $".{_minor}";
-                if (_hotfix is not null) result += $".{_hotfix}";
-            }
+            foreach (int v in validVersionsAfterMajor) result += $".{v}";
             return result;
         }
         public int CompareTo(object obj)
         {
             if (obj is null) return 1;
-            if (obj is not ModVersion other) throw new ArgumentException($"{obj} is not a ModVersion!");
+            if (obj is not ModVersion other)
+            {
+                throw new ArgumentException($"{obj} is not a ModVersion!");
+            }
             else
             {
-                if (Major != other.Major) return Major.CompareTo(other.Major);
-                int minorComparison = Utils.Compare(_minor, other._minor);
-                if (_minor is null || minorComparison != 0) return minorComparison;
-                return Utils.Compare(_hotfix, other._hotfix);
+                foreach((int a, int b) in ValidVersionNumbers.Zip(other.ValidVersionNumbers))
+                {
+                    int comparison;
+                    if ((comparison = Utils.Compare(a, b)) != 0) return comparison;
+                }
+            }
+            return 0;
+        }
+        private IEnumerable<int> validVersionsAfterMajor
+        {
+            get
+            {
+                if(_minor is not null)
+                {
+                    yield return _minor.Value;
+                    if (_hotfix is not null) yield return _hotfix.Value;
+                }
+            }
+        }
+        public IEnumerable<int> ValidVersionNumbers
+        {
+            get
+            {
+                yield return Major;
+                foreach (int v in validVersionsAfterMajor) yield return v;
             }
         }
         public static bool operator <(ModVersion a, ModVersion b) => a.CompareTo(b) < 0;

@@ -18,18 +18,19 @@ namespace JackboxModManager
                 foreach (string s in Directory.GetDirectories(SteamFolder)) if (Regex.IsMatch(s, ".*The Jackbox Party Pack \\d+")) yield return s;
             }
         }
-        public IEnumerable<GameInfo> InstalledGames
+        public IEnumerable<PackInfo> InstalledPacks
         {
             get
             {
                 foreach(string s in JackboxFolders)
                 {
-                    int version = int.Parse(s.Split(" ")[^0]);
+                    string[] split = s.Split(" ");
+                    int version = int.Parse(split.Last());
                     int build = $"{s}/{version.ConfigName()}".ParseBuildNumber(version);
                     yield return new()
                     {
                         Version = new(version, build),
-                        BasePath = s
+                        BasePath = $@"{s}\"
                     };
                 }
             }

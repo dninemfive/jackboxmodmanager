@@ -28,7 +28,7 @@ namespace JackboxModManager
             string raw = path.TryGetJsonValue("buildVersion");
             return jackboxNumber switch
             {
-                <= 5 => int.Parse(raw.Split(" ")[^0]),
+                <= 5 => int.Parse(raw.Split(" ").Last()),
                 >= 9 => int.Parse(raw),
                 _ => throw new Exception(jackboxNumber.UnsupportedMessage())
             };

@@ -20,8 +20,7 @@
         </Menu>
         <StatusBar Name="Status" DockPanel.Dock="Bottom" Padding="{StaticResource Margin}" Background="{StaticResource BackgroundLight}"/>
         <DockPanel Name="Display">
-            <ComboBox Name="SubgameSelect" DockPanel.Dock="Top" Margin="{StaticResource Margin}" Background="{StaticResource Foreground}"/>
-            <TreeView Name="FolderStructure" DockPanel.Dock="Left" Margin="{StaticResource Margin}" MinWidth="100" Background="{StaticResource Foreground}"></TreeView>            
+            <TreeView Name="FolderStructure" DockPanel.Dock="Left" Margin="{StaticResource Margin}" Padding="{StaticResource Margin}" MinWidth="100" Background="{StaticResource Foreground}"></TreeView>            
             <DockPanel Name="SelectedItem" Margin="{StaticResource Margin}" Background="{StaticResource BackgroundLight}"></DockPanel>
         </DockPanel>
     </DockPanel>
