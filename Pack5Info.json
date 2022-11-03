@@ -1,0 +1,10 @@
+{
+	"configFile": "config.jet",
+    "games": {
+		"PatentlyStupid": "Patently Stupid",
+		"RapBattle": "Mad Verse City",
+		"SlingShoot": "Zeeple Dome",
+		"SplitTheRoom": "Split The Room",
+		"YDKJ2018": "You Don't Know Jack"
+    }
+}

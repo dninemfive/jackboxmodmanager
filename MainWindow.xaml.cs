@@ -31,7 +31,7 @@ namespace JackboxModManager
                 SteamFolder = @"C:\Program Files (x86)\Steam\steamapps\common\"
             };
             foreach(PackInfo pi in CurrentConfig.InstalledPacks)
-            {                
+            {
                 TreeViewItem tvi = new()
                 {
                     Header = pi

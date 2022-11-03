@@ -19,7 +19,7 @@
             </MenuItem>
         </Menu>
         <StatusBar Name="Status" DockPanel.Dock="Bottom" Padding="{StaticResource Margin}" Background="{StaticResource BackgroundLight}"/>
-        <DockPanel Name="Display">
+        <DockPanel Name="Display" Margin="{StaticResource Margin}">
             <TreeView Name="FolderStructure" DockPanel.Dock="Left" Margin="{StaticResource Margin}" Padding="{StaticResource Margin}" MinWidth="100" Background="{StaticResource Foreground}"></TreeView>            
             <DockPanel Name="SelectedItem" Margin="{StaticResource Margin}" Background="{StaticResource BackgroundLight}"></DockPanel>
         </DockPanel>

@@ -1,0 +1,10 @@
+{
+	"configFile": "jbg.config.jet",
+    "games": {
+		"AntiqueGame": "Junktopia",
+		"Fibbage4": "Fibbage 4",
+		"MakeFriends": "Roomerang",
+		"RangeGame": "Nonsensory",
+		"Lineup": "Quixort"
+    }
+}
